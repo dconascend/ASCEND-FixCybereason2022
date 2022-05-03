@@ -1,0 +1,13 @@
+INSTRUCTIONS
+    If manually running on a machine. Right click and select "Run with Powershell". Accept any UAC prompts that appear. 
+    If running through RMM
+        Option 1: Copy the contents of the script into the RMM and ensure to run as Powershell Bypass. 
+        Option 2: Use the Option 2 Powershell command below to pull the contents of the script automatically from github. 
+        Option 3: Use the Option 3 CommandPrompt command below to run in windows command prompt (cmd.exe)
+    All 3 options will accomplish the same thing. 
+
+Option 2: Powershell
+[Net.ServicePointManager]::SecurityProtocol=[Enum]::ToObject([Net.SecurityProtocolType], 3072); (new-object Net.WebClient).DownloadString('https://raw.githubusercontent.com/dconascend/ASCEND-FixCybereason2022/main/ASCEND-FixCybereason2022.ps1') | iex;
+
+Option 3: CommandPrompt
+powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -command "&{[Net.ServicePointManager]::SecurityProtocol=[Enum]::ToObject([Net.SecurityProtocolType], 3072);(new-object Net.WebClient).DownloadString('https://raw.githubusercontent.com/dconascend/ASCEND-FixCybereason2022/main/ASCEND-FixCybereason2022.ps1') | iex;}"
